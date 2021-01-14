@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alltrails
+  labels:
+    app: alltrails
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: alltrails
+  template:
+    metadata:
+      labels:
+        app: alltrails
+    spec:
+      containers:
+      - name: alltrails
+        image: shrubadubdub/alltrails-lunch-api
+        env:
+        - name: ALLTRAILS_API_KEY 
+          value: "Your Google Map and Places API Key goes here." 
+        ports:
+        - containerPort: 5000 
